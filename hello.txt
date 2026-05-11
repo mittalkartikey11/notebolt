@@ -1,0 +1,487 @@
+[09-05-2026 10:44 PM] Putin: Build a modern, production-level personal knowledge management and interview preparation web application using React with JavaScript/JSX and Supabase. The app name should be “Interview Notes OS”. The application is NOT a messaging app. Telegram is only the source of my old notes because currently my interview-preparation notes are stored in Telegram groups with topics. The goal is to migrate all Telegram-exported notes into a structured, editable, searchable, premium desktop-first knowledge dashboard.
+
+The UI/UX should look premium, modern, minimal, clean, and highly maintainable. Use a desktop-first responsive layout inspired by modern productivity applications like Linear, Notion, Arc, Raycast, and high-end dashboard UIs. Avoid childish neon purple-only styling. Instead use a sophisticated dark theme with orange accent palette as default. The design should support dynamic theme switching and customizable color palettes. The entire UI must feel polished, elegant, scalable, and developer-friendly.
+
+Use React with JavaScript (not TypeScript). Use component-based architecture and maintainable folder structure. Use Supabase for database and storage. Use React Router for navigation. Use Zustand or Context API for global state management. Use TailwindCSS for styling. Use Framer Motion for animations. Use Lucide React icons.
+
+The app should support both Dark Mode and Light Mode with smooth transitions. Also create a Theme Engine where users can switch accent palettes globally. Provide multiple palette presets:
+- Orange Ember
+- Blue Ocean
+- Purple Neon
+- Green Matrix
+- Red Ruby
+- Cyan Tech
+- Yellow Focus
+- Monochrome Gray
+
+Theme switching should update buttons, active states, progress bars, icons, tags, charts, topic highlights, borders, hover states, and sidebar indicators throughout the application.
+
+The desktop layout should contain 3 main sections:
+
+LEFT SIDEBAR:
+The left sidebar should remain fixed. At the top show app branding/logo with “Interview Notes OS”. Below it place a “New Category” button visible only in Admin Mode. Under that place navigation links:
+- Home
+- All Notes
+- Starred
+- Recent
+- Tags
+- Trash
+- Progress
+- Settings
+
+Below navigation links show Categories section. Categories represent high-level subjects or collections such as:
+- DSA Sheets
+- Core CS Subjects
+- System Design
+- Interview Experience
+- Web Development
+- Aptitude
+- DevOps
+- Database
+- Others
+
+Each category should display note count and a colored indicator. Categories must support:
+- create
+- edit
+- delete
+- reorder
+- archive
+- duplicate
+- move
+- icon selection
+- accent color selection
+
+At the bottom of sidebar show profile/admin section with Admin Mode toggle.
+
+CENTER TOPICS PANEL:
+The middle panel should show Topics for the currently selected category. This panel behaves like topic explorer/navigation. Example topics:
+- Arrays
+- Strings
+- Linked List
+- Dynamic Programming
+- DBMS Keys
+- Transactions
+- Window Functions
+- OOPS Pillars
+- Deadlock
+- Virtual Memory
+
+Each topic card should display:
+- icon
+- title
+- note count
+- progress bar
+- last updated date
+- quick action menu
+
+Topic actions:
+- edit topic
+- delete topic
+- duplicate topic
+- move topic to another category
+- reorder topic
+- pin topic
+- archive topic
+- merge topics
+
+Allow drag-and-drop topic ordering.
+
+RIGHT MAIN CONTENT AREA:
+The main content panel should display Notes inside the selected topic. Notes should NOT look like chat bubbles. Instead they should appear as premium structured knowledge cards.
+
+Each note card should support:
+- title
+- rich formatted text
+- bullet lists
+- numbered lists
+- headings
+- inline code
+- code blocks
+- images
+- attachments
+- diagrams
+- links
+- tags
+- timestamps
+- edited status
+- pinned status
+- progress status
+- review status
+- difficulty labels
+- bookmark/star
+- completion percentage
+
+Notes should support rich formatting using EditorJS, Tiptap, or Lexical editor.
+
+Code blocks must support:
+- syntax highlighting
+- language labels
+- copy button
+- collapsible view
+- dark editor-style background
+[09-05-2026 10:44 PM] Putin: Every note card should have a three-dot admin action menu:
+- edit
+- delete
+- duplicate
+- move to another topic
+- move to another category
+- pin/unpin
+- mark completed
+- add tags
+- add attachments
+- export as markdown
+- export as PDF
+
+The bottom editor area should contain a rich note editor toolbar with:
+- bold
+- italic
+- underline
+- heading
+- inline code
+- code block
+- image upload
+- attachment upload
+- bullet list
+- numbered list
+- quote
+- divider
+- hyperlink
+- emoji support
+
+HOME DASHBOARD PAGE:
+Create a modern analytics-style homepage dashboard.
+
+The home page should include:
+- total notes count
+- completed notes
+- in-progress notes
+- starred notes
+- total categories
+- learning streak
+- recent activity feed
+- continue learning section
+- progress by category
+- popular tags
+- recently opened notes
+- weekly learning analytics
+- revision reminders
+- roadmap/progress cards
+
+Add circular progress charts and horizontal progress bars.
+
+TOP SEARCH BAR:
+At the top center of desktop view place a global search bar. It should support:
+- full text search
+- topic search
+- category search
+- tag filtering
+- pinned filter
+- starred filter
+- semantic search placeholder for future AI
+
+ADMIN MODE:
+Do not implement full authentication now. Instead add a simple Admin Mode toggle/button. By default the app is View Only Mode. In view-only mode users can:
+- browse notes
+- search
+- filter
+- read
+
+When Admin Mode is enabled all editing features unlock.
+
+TELEGRAM IMPORT SYSTEM:
+The app must support importing Telegram exported data from:
+- result.json
+- photos folder
+
+The importer should parse Telegram exports and map them correctly into the app.
+
+Telegram mapping logic:
+- Telegram group names become categories/workspaces
+- Telegram topics become topics
+- Messages inside topics become notes
+- Service messages with action “topic_created” create topics
+- reply_to_message_id determines which topic a message belongs to
+- text_entities determine formatting
+- bold entities become bold text
+- italic entities become italic text
+- pre entities become code blocks
+- code entities become inline code
+- links become hyperlinks
+- photos map to attachments/images
+- edited timestamps should be preserved
+
+Build reusable utility functions:
+- parseTelegramExport()
+- extractTopics()
+- mapMessagesToTopics()
+- convertTelegramEntities()
+- extractAttachments()
+- importToSupabase()
+
+Store original telegram ids to avoid duplicate imports.
+
+SUPABASE DATABASE:
+Use Supabase PostgreSQL.
+
+Tables:
+- categories
+- topics
+- notes
+- attachments
+- tags
+- note_tags
+- app_settings
+- progress_tracking
+- revision_history
+
+Use Supabase Storage for:
+- images
+- PDFs
+- attachments
+
+FUTURE AI SUPPORT:
+Keep architecture ready for future AI features using pgvector/Supabase vector database. Do not fully implement AI now but prepare infrastructure.
+
+Future AI features:
+- semantic search
+- AI summaries
+- AI-generated quizzes
+- AI flashcards
+- AI roadmap generation
+- AI revision suggestions
+- AI question answering over notes
+
+PERFORMANCE:
+- lazy loading
+- virtualization for notes
+- optimized renders
+- memoization
+- reusable hooks
+- modular architecture
+- maintainable folder structure
+
+The final application should feel like a premium personal knowledge operating system for interview preparation, revision, tracking, roadmap management, and structured learning.
+# Additional Requirements & Missing Features for NoteBolt
+
+## Advanced Rich Message Editing System
+
+The current spec mentions notes and editor support, but these features must be implemented exactly like a modern smooth messaging/editor experience.
+[09-05-2026 10:44 PM] Putin: ### Inline Message Editing (IMPORTANT)
+- Every note/message card must have an inline edit option.
+- Editing a note should NOT open a separate popup/modal page.
+- When clicking Edit:
+  - The existing message content should become editable directly inside the same card.
+  - Existing formatting, images, code blocks, colors, and attachments must remain visible and editable.
+  - Editing should feel seamless and instant.
+- Editing should never create a new note accidentally.
+- The same note record should update in Supabase.
+
+### Message Composer Experience
+The note input area should behave like modern chat/productivity apps:
+- Small/minimal height initially
+- Automatically expand vertically while typing
+- Smooth auto-resize
+- Rich formatting toolbar
+- No separate “Create Note Popup”
+
+The editor must support:
+- Plain text
+- Rich text
+- Mixed text + code in same note
+- Inline code
+- Multiple code blocks
+- Multiple images
+- Multiple attachments
+- Quotes
+- Tables later-ready
+
+## Keyboard Shortcuts
+
+### Desktop Formatting Shortcuts
+- Ctrl + B → Bold
+- Ctrl + I → Italic
+- Ctrl + U → Underline
+- Ctrl + M → Inline code
+- Ctrl + Shift + Enter → Next line without sending/saving
+- Ctrl + V → Paste image/file directly
+- Ctrl + K → Add hyperlink
+- Ctrl + / → Open shortcuts help
+
+Formatting should apply instantly like Notion/Telegram/Slack.
+
+## Per-Note Background Colors
+
+Every note card/message should support custom background highlight colors.
+
+### Example Presets
+- Golden
+- Orange
+- Blue
+- Cyan
+- Green
+- Purple
+- Pink
+- Red
+- Gray### Important Styling Requirement
+If a note uses:
+- Blue theme → light blue transparent background + blue border
+- Golden theme → soft gold background + golden border
+- Red theme → faded red background + red border
+
+Exactly like pinned topic styling currently works.
+
+These colors help users highlight:
+- Important notes
+- Revision notes
+The UI should feel modern, soft, and premium.
+
+## Message Rendering Rules
+
+Formatting imported from Telegram MUST render correctly:
+- Bold text stays bold
+- Italic stays italic
+- Underline stays underline
+- Code stays code
+- Code blocks stay formatted
+- Links remain clickable
+- Images remain attached
+
+Mixed content inside one note must render properly.
+
+Example:
+Normal explanation text + code block + image + bold headings inside same note.
+
+## Topic Auto Sorting (Recent Activity)
+
+If a user edits/adds a note inside Topic 3:
+- Topic 3 should automatically move to top of topics list.
+
+This should behave like:
+“Recently active topics first”
+
+Need:
+- last_activity_at field
+- auto sorting
+
+## Smooth UX Improvements
+
+### Current Problems To Fix
+- Category click not loading topics properly
+- Topics only loading after responsive inspect mode
+- Laggy scrolling
+- Delayed rendering
+
+### Required Fixes
+- Fix desktop click handlers
+- Proper state synchronization
+- Smooth scrolling
+## Dynamic Input Box Height
+
+### Behavior
+- Initially compact/minimal
+- Expands while typing
+- Shrinks when empty
+
+Smooth animated resizing required.
+
+## Mobile App Input Fixes
+
+### Current Issue
+Plus button exists but no proper note composer opens.
+
+### Required Mobile Behavior
+- Floating action button opens bottom-sheet editor
+- Full rich text support
+- Smooth keyboard handling
+- Toolbar above keyboard
+- Image upload from gallery/camera
+- Swipe-down dismiss
+
+## Progress Tracking System
+
+Users should be able to:
+- Mark topic complete
+- Mark note revised
+- Set progress percentage
+- Track revision count
+- Add difficulty level:
+  - Easy
+  - Medium
+  - Hard
+
+### Dashboard Tracking
+Add:
+- streak system
+- weekly progress
+- revision analytics
+- completion graphs
+- most active topics
+- recently revised
+
+## Supabase Testing Utilities
+
+Since imports/testing will happen repeatedly:
+
+### Add Dangerous Admin Utilities
+Inside Settings/Admin:
+- Delete all imported data
+- Delete all notes
+- Delete all topics
+- Delete all categories
+- Reset app database
+- Clear storage bucket
+
+### Styling
+- Red bordered danger zone section
+- Confirmation modal required
+
+## Telegram Import Enhancements
+[09-05-2026 10:44 PM] Putin: ### Required Import Handling
+Importer should:
+- Prevent duplicate imports
+- Detect existing telegram_message_id
+- Skip duplicates intelligently
+- Support re-importing updated exports
+Each note card should contain:
+- Edit
+- Delete
+- Duplicate
+- Move to Topic
+- Move to Category
+- Change Color
+- Pin
+- Star
+- Export Markdown
+- Copy Link
+- Copy Note
+- Add Tags
+
+## Search Improvements
+
+Search should support:
+- instant search
+- keyboard navigation
+- highlighted matches
+- fuzzy matching
+- recent searches
+- search history
+## Final UX Goal
+
+The final product should feel like:
+- Telegram Topics
+- Notion
+- Linear
+- Raycast
+- Obsidian
+combined together into one premium interview preparation operating system.
+
+It should feel:
+- fast
+- smooth
+- elegant
+- modern
+- dense but readable
+- keyboard-friendly
+- productivity-focused
+
+I NEED REPLICA SAME FRONTEND UI  DESIGNA S SAME ATATCHED IMAGE IN THIS ABOEV MESSAGE
